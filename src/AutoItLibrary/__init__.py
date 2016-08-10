@@ -240,8 +240,11 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         #
         # Embed the screenshot in the Robot Framework log file
         #
+        # Browsers are double encoding path if there is not 'file://'
+        fullFilePath = 'file://' + fullFilePath
+        # Embeded screenshot need to have a full path if there is not default Output directory
         self._html('<td></td></tr><tr><td colspan="3"><a href="%s">'
-                   '<img src="%s" width="700px"></a></td></tr>' % (FilePath, FilePath))
+                   '<img src="%s" width="700px"></a></td></tr>' % (fullFilePath, fullFilePath))
     #
     #-------------------------------------------------------------------------------
     #
